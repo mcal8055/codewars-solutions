@@ -218,6 +218,68 @@ public class Kata
                  return map.get(i) <= maxOcurrences;
                 }).toArray();
     }
+
+    public static int maxRotate(Integer number)
+    {
+        // 56789     5, 6789 -> 67895
+        // 67895  6, 7, 895 -> 6, 895, 7
+        // 68957  68, 9, 57 -> 68, 57, 9
+        String nums = number.toString();
+
+
+        for (int i = 0; i < nums.length() - 1; i++)
+        {
+            nums = nums.substring(0, i) + nums.substring(i + 1) + nums.charAt(i);
+
+            if (Integer.getInteger(nums) > number)
+            {
+                number = Integer.getInteger(nums);
+            }
+        }
+        return number;
+    }
+
+    //        String num = String.valueOf(n);
+//
+//        for (int i = 0; i < num.length() - 1; i++)
+//        {
+//            num = num.substring(0, i) + num.substring(i + 1) + num.charAt(i);
+//
+//            if (Long.parseLong(num) > n)
+//            {
+//                n = Long.parseLong(num);
+//            }
+//        }
+//
+//        return n;
+//    }
+    public static long ipsBetween(String start, String end)
+    {
+        return convertToLong(end) - convertToLong(start);
+    }
+    private static long convertToLong(String ipAddress)
+    {
+        long res = 0;
+
+        for (String string : ipAddress.split("[.]"))
+            res = res * 256 + Long.parseLong(string);
+        return res;
+    }
+
+    public static int getCount(String str)
+    {
+        int vowelCount = 0;
+
+        char[] charArray = str.toCharArray();
+        for(int i = 0; i < charArray.length; i++ )
+        {
+            if(charArray[i] == 'a' || charArray[i] == 'e' || charArray[i] == 'i' || charArray[i] == 'o' || charArray[i] == 'u')
+            {
+                vowelCount++;
+            }
+        }
+        return vowelCount;
+    }
 }
 
 
