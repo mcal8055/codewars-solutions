@@ -280,6 +280,43 @@ public class Kata
         }
         return vowelCount;
     }
+
+    public int squareDigits(int n)
+    {
+        String s = n + "";
+        String[] digits = s.split("");
+        String output = "";
+
+        for(String string : digits)
+        {
+            int i = Integer.parseInt(string);
+            output += i * i;
+        }
+        return Integer.parseInt(output);
+    }
+    public static int findIt(int[] a)
+    {
+        for(int i = 0; i < a.length; i++)
+        {
+            int num = a[i];
+            int occurences = 0;
+
+            for (int j = 0; j < a.length; j++)
+            {
+                if (a[j] == num){
+                    occurences++;
+                }
+            }
+
+            if (occurences % 2 != 0)
+            {
+                return num;
+            }
+        }
+        return 0;
+    }
+
+    
 }
 
 
